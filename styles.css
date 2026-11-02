@@ -753,14 +753,36 @@
         flex-wrap: nowrap;
         justify-content: flex-start;
         overflow-x: auto;
-        padding: 0.25rem 0 0.75rem;
-        margin-bottom: 1.5rem;
-        scrollbar-width: thin;
-        scrollbar-color: var(--accent-gold) transparent;
+        position: sticky;
+        top: 66px;
+        z-index: 40;
+        gap: 0.5rem;
+        margin: 0 -1rem 1.25rem;
+        padding: 0.65rem 1rem;
+        background: rgba(12, 13, 16, 0.96);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+      }
+
+      .filters::-webkit-scrollbar {
+        display: none;
       }
 
       .filter-btn {
         flex: 0 0 auto;
+        min-height: 44px;
+        padding: 0.65rem 1rem;
+        scroll-snap-align: center;
+        touch-action: manipulation;
+      }
+
+      .filter-btn:focus-visible {
+        outline: 2px solid var(--accent-gold-light);
+        outline-offset: 2px;
       }
 
       .products-grid {

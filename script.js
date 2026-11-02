@@ -203,12 +203,13 @@
 
     // Renderizar botones de filtro
     function renderCategoryFilters(categories) {
-      filtersContainer.innerHTML = `<button class="filter-btn ${activeCategory === 'ALL' ? 'active' : ''}" data-category="ALL">Todos</button>`;
+      filtersContainer.innerHTML = `<button class="filter-btn ${activeCategory === 'ALL' ? 'active' : ''}" data-category="ALL" aria-pressed="${activeCategory === 'ALL'}">Todos</button>`;
       
       categories.forEach(cat => {
         const btn = document.createElement('button');
         btn.className = `filter-btn ${activeCategory === cat ? 'active' : ''}`;
         btn.dataset.category = cat;
+        btn.setAttribute('aria-pressed', String(activeCategory === cat));
         btn.textContent = cat;
         filtersContainer.appendChild(btn);
       });
@@ -216,9 +217,15 @@
       filtersContainer.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           filtersContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          filtersContainer.querySelectorAll('.filter-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
           btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
           activeCategory = btn.dataset.category;
           renderProducts();
+
+          if (window.matchMedia('(max-width: 640px)').matches) {
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
         });
       });
     }
