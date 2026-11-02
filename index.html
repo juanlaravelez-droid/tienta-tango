@@ -8,6 +8,7 @@
   <!-- Tipografías elegantes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://img.kwcdn.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
@@ -54,10 +55,6 @@
   <section class="hero" id="inicio">
     <h2>Elegancia en Cada Movimiento</h2>
     <p>Prendas, accesorios y detalles exclusivos inspirados en la estética milonguera.</p>
-    <div class="sync-status">
-      <span class="status-dot"></span>
-      <span>Conectado a inventario en vivo</span>
-    </div>
   </section>
 
   <!-- Catálogo -->
@@ -100,6 +97,14 @@
       </button>
     </div>
   </aside>
+
+  <button class="mobile-cart-bar" id="mobile-cart-bar" type="button" aria-label="Abrir pedido" aria-hidden="true">
+    <span class="mobile-cart-summary">
+      <span class="mobile-cart-label"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Ver pedido</span>
+      <span class="mobile-cart-items" id="mobile-cart-items">0 productos</span>
+    </span>
+    <span class="mobile-cart-total" id="mobile-cart-total">$0</span>
+  </button>
 
   <footer>
     <p>&copy; 2026 Milonga Boutique. Todos los derechos reservados.</p>

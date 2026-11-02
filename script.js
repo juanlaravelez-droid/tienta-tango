@@ -17,6 +17,9 @@
     const openCartBtn = document.getElementById('open-cart-btn');
     const mobileCartCounter = document.getElementById('mobile-cart-counter');
     const mobileOpenCartBtn = document.getElementById('mobile-open-cart');
+    const mobileCartBar = document.getElementById('mobile-cart-bar');
+    const mobileCartItems = document.getElementById('mobile-cart-items');
+    const mobileCartTotal = document.getElementById('mobile-cart-total');
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileNavigation = document.getElementById('mobile-navigation');
     const closeCartBtn = document.getElementById('close-cart-btn');
@@ -245,12 +248,12 @@
         return;
       }
 
-      productsGrid.innerHTML = filtered.map(item => `
+      productsGrid.innerHTML = filtered.map((item, index) => `
         <article class="product-card">
           <div class="card-img-wrapper">
             <span class="category-tag">${item.category}</span>
             ${item.image 
-              ? `<img src="${item.image}" alt="${item.name}" loading="lazy">` 
+              ? `<img src="${item.image}" alt="${item.name}" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async" width="600" height="600"${index < 2 ? ' fetchpriority="high"' : ''}>`
               : `<div class="img-placeholder"><i class="fa-solid fa-gem"></i></div>`
             }
           </div>
@@ -295,6 +298,11 @@
       const totalUnits = cart.reduce((sum, item) => sum + item.qty, 0);
       cartCounter.textContent = totalUnits;
       mobileCartCounter.textContent = totalUnits;
+      mobileCartItems.textContent = `${totalUnits} ${totalUnits === 1 ? 'producto' : 'productos'}`;
+      mobileCartTotal.textContent = formatCOP(cart.reduce((sum, item) => sum + (item.price * item.qty), 0));
+      mobileCartBar.classList.toggle('visible', cart.length > 0);
+      mobileCartBar.setAttribute('aria-hidden', String(cart.length === 0));
+      document.body.classList.toggle('has-cart-items', cart.length > 0);
 
       if (cart.length === 0) {
         drawerBody.innerHTML = `
@@ -316,8 +324,8 @@
         <div class="cart-items-list">
           ${cart.map(item => `
             <div class="cart-item">
-              ${item.image 
-                ? `<img src="${item.image}" class="cart-item-img" alt="${item.name}">` 
+              ${item.image
+                ? `<img src="${item.image}" class="cart-item-img" alt="${item.name}" loading="lazy" decoding="async" width="60" height="60">`
                 : `<div class="cart-item-img" style="display:flex;align-items:center;justify-content:center;color:var(--accent-gold);"><i class="fa-solid fa-gem"></i></div>`
               }
               <div class="cart-item-info">
@@ -380,8 +388,15 @@
 
     openCartBtn.addEventListener('click', openCartDrawer);
     mobileOpenCartBtn.addEventListener('click', openCartDrawer);
+    mobileCartBar.addEventListener('click', openCartDrawer);
     closeCartBtn.addEventListener('click', closeCartDrawer);
     drawerOverlay.addEventListener('click', closeCartDrawer);
+
+    drawerBody.addEventListener('focusin', event => {
+      if (event.target.matches('.form-input') && window.matchMedia('(max-width: 640px)').matches) {
+        event.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
 
     function closeMobileNavigation() {
       mobileNavigation.classList.remove('open');

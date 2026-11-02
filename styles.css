@@ -589,6 +589,10 @@
       background: #0f1015;
     }
 
+    .mobile-cart-bar {
+      display: none;
+    }
+
     .total-row {
       display: flex;
       justify-content: space-between;
@@ -785,9 +789,111 @@
         outline-offset: 2px;
       }
 
+      body.has-cart-items {
+        padding-bottom: calc(76px + env(safe-area-inset-bottom));
+      }
+
+      .mobile-cart-bar {
+        position: fixed;
+        right: 0.75rem;
+        bottom: max(0.75rem, env(safe-area-inset-bottom));
+        left: 0.75rem;
+        z-index: 70;
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 60px;
+        padding: 0.7rem 1rem;
+        border: 1px solid rgba(243, 229, 171, 0.35);
+        border-radius: 14px;
+        background: var(--accent-gold);
+        color: #0b0c10;
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+        font-family: var(--font-body);
+        text-align: left;
+        cursor: pointer;
+        touch-action: manipulation;
+      }
+
+      .mobile-cart-bar.visible {
+        display: flex;
+      }
+
+      .mobile-cart-summary {
+        display: grid;
+        gap: 0.15rem;
+      }
+
+      .mobile-cart-label {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      .mobile-cart-items {
+        font-size: 0.72rem;
+        opacity: 0.78;
+      }
+
+      .mobile-cart-total {
+        flex: 0 0 auto;
+        font-family: var(--font-title);
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .mobile-cart-bar:focus-visible {
+        outline: 3px solid var(--accent-gold-light);
+        outline-offset: 3px;
+      }
+
       .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
         gap: 1rem;
+      }
+
+      .cart-drawer {
+        height: 100vh;
+        height: 100dvh;
+        bottom: auto;
+      }
+
+      .drawer-body {
+        min-height: 0;
+        overscroll-behavior: contain;
+        scroll-padding-block: 1rem 2rem;
+      }
+
+      .drawer-footer {
+        flex: 0 0 auto;
+        padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+      }
+
+      .cart-item-controls {
+        gap: 0.65rem;
+      }
+
+      .qty-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+      }
+
+      .remove-item-btn {
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .form-input {
+        min-height: 48px;
+        font-size: 16px;
+        scroll-margin-block: 1rem;
       }
 
       .card-img-wrapper {
