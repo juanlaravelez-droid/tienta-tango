@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boutique Milonga - Catálogo & Accesorios</title>
+  
+  <!-- Tipografías elegantes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo-container">
+        <i class="fa-solid fa-gem logo-icon"></i>
+        <div class="logo-text">
+          <h1>Milonga Boutique</h1>
+          <p>Accesorios & Esencia Tanguera</p>
+        </div>
+      </a>
+      <div class="header-actions">
+        <button class="cart-btn" id="open-cart-btn" aria-label="Ver Carrito">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span>Carrito</span>
+          <span class="cart-badge" id="cart-counter">0</span>
+        </button>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" type="button"
+          aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-navigation">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-navigation" id="mobile-navigation" aria-label="Navegación móvil">
+      <a href="#inicio"><i class="fa-solid fa-house" aria-hidden="true"></i> Inicio</a>
+      <a href="#catalogo"><i class="fa-solid fa-store" aria-hidden="true"></i> Catálogo</a>
+      <a href="#filters-container"><i class="fa-solid fa-list" aria-hidden="true"></i> Categorías</a>
+      <button type="button" id="mobile-open-cart">
+        <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Ver carrito
+        <span class="cart-badge" id="mobile-cart-counter">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Banner -->
+  <section class="hero" id="inicio">
+    <h2>Elegancia en Cada Movimiento</h2>
+    <p>Prendas, accesorios y detalles exclusivos inspirados en la estética milonguera.</p>
+    <div class="sync-status">
+      <span class="status-dot"></span>
+      <span>Conectado a inventario en vivo</span>
+    </div>
+  </section>
+
+  <!-- Catálogo -->
+  <main id="catalogo">
+    <!-- Filtros de Categoría -->
+    <div class="filters" id="filters-container">
+      <button class="filter-btn active" data-category="ALL">Todos</button>
+    </div>
+
+    <!-- Indicador de Carga / Error -->
+    <div id="status-container" class="state-container">
+      <div class="spinner"></div>
+      <p>Sincronizando catálogo desde Google Sheets...</p>
+    </div>
+
+    <!-- Rejilla de Productos -->
+    <div class="products-grid" id="products-grid" style="display: none;"></div>
+  </main>
+
+  <!-- Drawer Lateral del Carrito -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3><i class="fa-solid fa-bag-shopping"></i> Tu Pedido</h3>
+      <button class="close-btn" id="close-cart-btn" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="drawer-body" id="drawer-body">
+      <!-- Los productos del carrito se renderizan aquí -->
+    </div>
+
+    <div class="drawer-footer" id="drawer-footer" style="display: none;">
+      <div class="total-row">
+        <span class="total-label">Total a Pagar</span>
+        <span class="total-amount" id="cart-total-amount">$0</span>
+      </div>
+      <button class="whatsapp-btn" id="checkout-whatsapp-btn">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>Completar Pedido por WhatsApp</span>
+      </button>
+    </div>
+  </aside>
+
+  <footer>
+    <p>&copy; 2026 Milonga Boutique. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
