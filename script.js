@@ -328,15 +328,12 @@
         </div>
 
         <div class="checkout-form">
-          <div class="form-title">Datos para la entrega</div>
+          <div class="form-title">Datos del pedido</div>
           <div class="form-group">
             <input type="text" id="cust-name" class="form-input" placeholder="Nombre completo *" required>
           </div>
           <div class="form-group">
             <input type="text" id="cust-city" class="form-input" placeholder="Ciudad / Municipio *" value="Medellín">
-          </div>
-          <div class="form-group">
-            <input type="text" id="cust-address" class="form-input" placeholder="Dirección de entrega">
           </div>
         </div>
       `;
@@ -405,11 +402,9 @@
     checkoutWhatsappBtn.addEventListener('click', () => {
       const nameInput = document.getElementById('cust-name');
       const cityInput = document.getElementById('cust-city');
-      const addressInput = document.getElementById('cust-address');
 
       const name = nameInput ? nameInput.value.trim() : '';
       const city = cityInput ? cityInput.value.trim() : '';
-      const address = addressInput ? addressInput.value.trim() : '';
 
       if (!name) {
         alert('Por favor ingresa tu nombre para procesar el pedido.');
@@ -420,7 +415,6 @@
       let msg = `✨ *NUEVO PEDIDO - MILONGA BOUTIQUE* ✨\n\n`;
       msg += `👤 *Cliente:* ${name}\n`;
       if (city) msg += `📍 *Ciudad:* ${city}\n`;
-      if (address) msg += `🏠 *Dirección:* ${address}\n`;
       msg += `\n🛒 *DETALLE DEL PEDIDO:*\n`;
       msg += `─────────────────────────\n`;
 
