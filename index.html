@@ -42,7 +42,7 @@
     </div>
     <nav class="mobile-navigation" id="mobile-navigation" aria-label="Navegación móvil">
       <a href="#inicio"><i class="fa-solid fa-house" aria-hidden="true"></i> Inicio</a>
-      <a href="#catalogo"><i class="fa-solid fa-store" aria-hidden="true"></i> Catálogo</a>
+      <a href="#product-list"><i class="fa-solid fa-store" aria-hidden="true"></i> Catálogo</a>
       <a href="#filters-container"><i class="fa-solid fa-list" aria-hidden="true"></i> Categorías</a>
       <button type="button" id="mobile-open-cart">
         <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Ver carrito
@@ -64,14 +64,16 @@
       <button class="filter-btn active" data-category="ALL">Todos</button>
     </div>
 
-    <!-- Indicador de Carga / Error -->
-    <div id="status-container" class="state-container">
-      <div class="spinner"></div>
-      <p>Sincronizando catálogo desde Google Sheets...</p>
-    </div>
+    <section id="product-list" aria-label="Productos">
+      <!-- Indicador de Carga / Error -->
+      <div id="status-container" class="state-container">
+        <div class="spinner"></div>
+        <p>Sincronizando catálogo desde Google Sheets...</p>
+      </div>
 
-    <!-- Rejilla de Productos -->
-    <div class="products-grid" id="products-grid" style="display: none;"></div>
+      <!-- Rejilla de Productos -->
+      <div class="products-grid" id="products-grid" style="display: none;"></div>
+    </section>
   </main>
 
   <!-- Drawer Lateral del Carrito -->

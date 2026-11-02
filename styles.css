@@ -188,6 +188,10 @@
       scroll-margin-top: 100px;
     }
 
+    #product-list {
+      scroll-margin-top: 100px;
+    }
+
     .filter-btn {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -770,6 +774,10 @@
         overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
+      }
+
+      #product-list {
+        scroll-margin-top: 130px;
       }
 
       .filters::-webkit-scrollbar {
